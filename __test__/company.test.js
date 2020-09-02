@@ -26,7 +26,7 @@ describe('doGet call', () => {
   });
 });
 /**
- * test controller for /company/:name route
+ * test controller for /company/:companyName route
  *
  * */
 describe('controller call', () => {
@@ -72,7 +72,9 @@ describe('controller call', () => {
       await getCompanyDetails(req, res, next);
       expect(res.json).toHaveBeenCalledTimes(0);
       expect(next).toHaveBeenCalledTimes(1);
-      expect(next.mock.calls[0][0].message).toBe('name is a required field');
+      expect(next.mock.calls[0][0].message).toBe(
+        'companyName is a required field',
+      );
     });
   });
 });

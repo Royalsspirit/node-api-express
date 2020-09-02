@@ -11,7 +11,7 @@ app.use(helmet());
 app.use(morgan('common'));
 app.use(express.json());
 
-app.get('/company/:name', getCompanyDetails);
+app.get('/company/:companyName', getCompanyDetails);
 
 app.use((req, res, next) => {
   res.status(404).json({ message: 'route does not exist.' });
