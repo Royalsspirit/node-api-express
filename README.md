@@ -120,8 +120,8 @@ All files      |   76.29 |    88.24 |     100 |   76.29 |
 
 * [Express](http://www.dropwizard.io/1.0.2/docs/) - The web framework usedFast, unopinionated, minimalist web framework for node.
 * [Yup](http://www.dropwizard.io/1.0.2/docs/) - Yup is a JavaScript schema builder for value parsing and validation.
-* [Morgan](hcittp://www.dropwizard.io/1.0.2/docs/) - HTTP request logger middleware for node.js
-* [Winston](hcittp://www.dropwizard.io/1.0.2/docs/) - A logger for just about everything.
+* [Morgan](http://www.dropwizard.io/1.0.2/docs/) - HTTP request logger middleware for node.js
+* [Winston](http://www.dropwizard.io/1.0.2/docs/) - A logger for just about everything.
 
 ## Versioning
 
