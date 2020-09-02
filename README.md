@@ -59,21 +59,26 @@ docker build -t october-api .
 docker run -it --rm october-api -p 8000:8000
 ```
 
-Finally, you are ready to play with it.
+There are severals env variables to custom the api that you can put into a .env file.
+
+`enableSocietecomApi` is a boolean which disable or not utilisation of the societeinfo.com api. Default: true
+`societecomApiKey` is a string which contain an api key for the the societeinfo.com api calls. Default: my api key
+`httpPort` is a number indicate the http port: Default: 8000
+
+Finally, type `npm start` and you are ready to play with it 
 
 ### Usage
 
 This api expose one endpoint `/company/:text` which allow to retrieve company cell numbers from :text input
 if there are awailable on societeinfo.com api.
 
-2 optional query parameters:
-- withAddress (add address in output json)
-- withName (add name of company in output json)
+To be more accurate, you can use 2 optional query parameters:
+- postcode (postcode of company location)
+- siren (siren of company)
 
-These previous parameters are added just to show what can be done.
 If you need more parameters, open an issue.
 
-TODO create a swagger and expose it on a new endpoint. In progress, see corresponding issue.
+TODO create a swagger and expose it. In progress, see corresponding issue.
 
 ## Running the tests
 

@@ -26,7 +26,7 @@ describe('doGet call', () => {
   });
 });
 /**
- * test controller for /company/:query route
+ * test controller for /company/:companyName route
  *
  * */
 describe('controller call', () => {
@@ -37,10 +37,11 @@ describe('controller call', () => {
     req = {
       body: jest.fn().mockReturnValue({}),
       params: jest.fn().mockReturnValue({}),
+      query: jest.fn().mockReturnValue({}),
     };
     res = {
-      status: jest.fn().mockReturnValue(res),
-      json: jest.fn().mockReturnValue(res),
+      status: jest.fn().mockReturnValue({}),
+      json: jest.fn().mockReturnValue({}),
     };
     next = jest.fn().mockReturnValue({});
     const spy = jest.spyOn(apiClient, 'doGet');
@@ -49,10 +50,10 @@ describe('controller call', () => {
       etablissement: [{ siret: 123456789 }],
     });
   });
-  describe('when query parameter is a string', () => {
+  describe('when name parameter is a string', () => {
     describe('and none optionnal parameter', () => {
       beforeEach(() => {
-        req.params.query = 'apple';
+        req.params.companyName = 'apple';
       });
 
       it('should call json function', async () => {
@@ -65,13 +66,15 @@ describe('controller call', () => {
       });
     });
   });
-  describe('when query parameter is empty', () => {
+  describe('when name parameter is empty', () => {
     it('should fail at validator level', async () => {
-      req.params.query = '';
+      req.params.companyName = '';
       await getCompanyDetails(req, res, next);
       expect(res.json).toHaveBeenCalledTimes(0);
       expect(next).toHaveBeenCalledTimes(1);
-      expect(next.mock.calls[0][0].message).toBe('query is a required field');
+      expect(next.mock.calls[0][0].message).toBe(
+        'companyName is a required field',
+      );
     });
   });
 });
