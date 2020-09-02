@@ -22,9 +22,9 @@ const getCompanyDetails = async (req, res, next) => {
     const output = {};
 
     if (!siren) {
-      // made a free call to entreprise data gouv to get siret number from string
-      // and to save credit for societeinfo call
-      // move url to global var
+      // made a free call to entreprise data gouv to get siret number from input string
+      // in order to save credit for societeinfo call
+      // TODO move url to global var
       let url = `https://entreprise.data.gouv.fr/api/sirene/v1/full_text/${companyName}`;
       if (postcode) {
         url += `?code_postal=${postcode}`;
