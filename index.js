@@ -5,6 +5,8 @@ const helmet = require('helmet');
 const { getCompanyDetails } = require('./controller/company.js');
 const logger = require('./helper/logger.js');
 
+const port = process.env.httpPort || 8000;
+
 const app = express();
 
 app.use(helmet());
@@ -25,7 +27,6 @@ app.use((error, req, res, next) => {
   });
 });
 
-const port = 8000;
 app.listen(port, () => {
   logger.info(`listenning on port ${port}`);
 });

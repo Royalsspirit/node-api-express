@@ -2,7 +2,7 @@ const apiClient = require('../helper/apiClient.js');
 const { companyDetails } = require('../validator/company.js');
 const logger = require('../helper/logger.js');
 
-const SOCIETECOM_API = process.env.enableSocietecomApi || false;
+const SOCIETECOM_API = process.env.enableSocietecomApi || true;
 const API_KEY = process.env.societecomApiKey
   || 'v7b7ikr3mka7p1fmc8nbblruualj9cv8qalbth3vkpn1tn7cpk8';
 

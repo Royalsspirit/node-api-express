@@ -59,7 +59,13 @@ docker build -t october-api .
 docker run -it --rm october-api -p 8000:8000
 ```
 
-Finally, you are ready to play with it.
+There are severals env variables to custom the api that you can put into a .env file.
+
+`enableSocietecomApi` is a boolean which disable or not utilisation of the societeinfo.com api. Default: true
+`societecomApiKey` is a string which contain an api key for the the societeinfo.com api calls. Default: my api key
+`httpPort` is a number indicate the http port: Default: 8000
+
+Finally, type `npm start` and you are ready to play with it 
 
 ### Usage
 
