@@ -1,7 +1,12 @@
 # Simple api with express
 
 An api to retreive companies phone number.
-Chose to calls two apies:
+Have many way to retrieve it:
+- use google api but need to fill card number
+- crawl google search url with current input test and retrieve number with regex
+- use free api
+  
+Chose to calls two free apies:
 - entreprise.data.gouv.fr (free)
 - societeinfo.com (25 calls free)
 
