@@ -53,19 +53,29 @@ const getCompanyDetails = async (req, res, next) => {
         const detailsCompany = await apiClient.doGet(
           `https://societeinfo.com/app/rest/api/v2/company.json/${output.siren}?key=${API_KEY}`,
         );
-        if (detailsCompany.result.last_bodacc.address) {
-          output.address = detailsCompany.result.last_bodacc.address;
-        }
-        if (!output.siret) {
-          output.siret = detailsCompany.result.organization.full_registration_number;
-        }
-        if (detailsCompany.result.organization.name) {
-          output.name = detailsCompany.result.organization.name;
-        }
-        if (detailsCompany.result.contacts.phones) {
-          output.phones = detailsCompany.result.contacts.phones;
+        if (detailsCompany.result) {
+          if (
+            detailsCompany.result.last_bodacc
+            && detailsCompany.result.last_bodacc.address
+          ) {
+            output.address = detailsCompany.result.last_bodacc.address;
+          }
+          if (!output.siret) {
+            output.siret = detailsCompany.result.organization.full_registration_number;
+          }
+          if (detailsCompany.result.organization.name) {
+            output.name = detailsCompany.result.organization.name;
+          }
+          if (
+            detailsCompany.result.contacts
+            && detailsCompany.result.contacts.phones
+          ) {
+            output.phones = detailsCompany.result.contacts.phones;
+          } else {
+            logger.info('Sorry cell number not found');
+          }
         } else {
-          logger.info('Sorry cell number not found');
+          next(`${companyName} not found in societeinfo.com`);
         }
       }
     } else {
